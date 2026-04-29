@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Login - Hostel Complaint System{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card animate-fade">
+        <h2 class="text-center mb-4">Hostel Complaint and Tracking System</h2>
+        
+        <div id="loginForm">
+            <h5 class="text-center mb-4">Welcome Back</h5>
+            <div class="mb-3">
+                <input type="text" id="username" class="form-control" placeholder="Username" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" id="password" class="form-control" placeholder="Password" required>
+            </div>
+            <div class="mb-3">
+                <select id="login_role" class="form-select auth-input">
+                    <option value="student">Student</option>
+                    <option value="warden">Warden</option>
+                    <option value="staff">Maintenance Staff</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+            <button class="btn btn-premium" onclick="handleLogin()">Login</button>
+            <p class="text-center mt-3">
+                <small>Don't have an account? <a href="#" onclick="toggleAuth()" class="text-info">Register</a></small>
+            </p>
+        </div>
+
+        <div id="registerForm" style="display: none;">
+            <h5 class="text-center mb-4">Create Account</h5>
+            <div class="mb-3">
+                <input type="text" id="reg_username" class="form-control" placeholder="Username" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" id="reg_password" class="form-control" placeholder="Password" required>
+            </div>
+            <div class="mb-3">
+                <select id="reg_role" class="form-select auth-input" onchange="toggleStudentFields()">
+                    <option value="student">Student</option>
+                    <option value="warden">Warden</option>
+                    <option value="staff">Maintenance Staff</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+            <div id="studentFields" style="display:none;">
+                <div class="mb-3">
+                    <select id="reg_block" class="form-select auth-input">
+                        <option value="">Select Block</option>
+                        <option value="Ruby">Ruby</option>
+                        <option value="Pearl">Pearl</option>
+                        <option value="Emerald">Emerald</option>
+                        <option value="Gold">Gold</option>
+                        <option value="Habitat">Habitat</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <input type="text" id="reg_room" class="form-control" placeholder="Room Number">
+                </div>
+            </div>
+            <button class="btn btn-premium" onclick="handleRegister()">Register</button>
+            <p class="text-center mt-3">
+                <small>Already have an account? <a href="#" onclick="toggleAuth()" class="text-info">Login</a></small>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
